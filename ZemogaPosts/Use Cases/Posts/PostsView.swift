@@ -18,18 +18,18 @@ struct PostsView: View {
                     NavigationLink(destination: DescriptionView(post: post)) {
                         Text(post.title)
                             .font(.body)
-                    } // Link
-                } // List
+                    }
+                } // LIST
                 if postsViewModel.loading {
                     ProgressView()
                         .progressViewStyle(.circular)
-                } // Loading
-            } // ZStack
+                }
+            } // ZSTACK
             .onAppear {
                 postsViewModel.getPosts()
             }
             .navigationTitle("\(Constants.posts)")
-        } // Navigation View
+        }
     }
 }
 

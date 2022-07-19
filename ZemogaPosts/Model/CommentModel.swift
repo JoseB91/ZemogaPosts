@@ -5,11 +5,15 @@
 //  Created by José Briones Romero on 18/7/22.
 //
 
+import RealmSwift
 import Foundation
 
-struct Comment: Codable {
-    let postID, id: Int
-    let name, email, body: String
+class Comment: Object, Codable {
+    @Persisted var id: Int
+    @Persisted var postID: Int
+    @Persisted var name: String
+    @Persisted var email: String
+    @Persisted var body: String
 
     enum CodingKeys: String, CodingKey {
         case postID = "postId"

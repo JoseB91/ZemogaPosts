@@ -22,6 +22,8 @@
 		3503B228288629DD00989E1A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B227288629DD00989E1A /* UserModel.swift */; };
 		3503B22A28862C5000989E1A /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B22928862C5000989E1A /* DescriptionView.swift */; };
 		3503B22D28870CCE00989E1A /* PostsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B22C28870CCE00989E1A /* PostsService.swift */; };
+		3503B231288757F900989E1A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 3503B230288757F900989E1A /* Realm */; };
+		3503B233288757F900989E1A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3503B232288757F900989E1A /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3503B233288757F900989E1A /* RealmSwift in Frameworks */,
+				3503B231288757F900989E1A /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,10 +114,9 @@
 		3503B1EE2885F0EF00989E1A /* ZemogaPosts */ = {
 			isa = PBXGroup;
 			children = (
+				3503B22E2887207900989E1A /* Use Cases */,
 				3503B22B28870CA000989E1A /* Service */,
 				3503B2222885F72600989E1A /* Model */,
-				3503B21D2885F5AB00989E1A /* Description */,
-				3503B21C2885F5A100989E1A /* Posts */,
 				3503B2192885F4ED00989E1A /* Utils */,
 				3503B1EF2885F0EF00989E1A /* ZemogaPostsApp.swift */,
 				3503B1F32885F0F000989E1A /* Assets.xcassets */,
@@ -191,6 +194,15 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		3503B22E2887207900989E1A /* Use Cases */ = {
+			isa = PBXGroup;
+			children = (
+				3503B21C2885F5A100989E1A /* Posts */,
+				3503B21D2885F5AB00989E1A /* Description */,
+			);
+			path = "Use Cases";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -207,6 +219,10 @@
 			dependencies = (
 			);
 			name = ZemogaPosts;
+			packageProductDependencies = (
+				3503B230288757F900989E1A /* Realm */,
+				3503B232288757F900989E1A /* RealmSwift */,
+			);
 			productName = ZemogaPosts;
 			productReference = 3503B1EC2885F0EF00989E1A /* ZemogaPosts.app */;
 			productType = "com.apple.product-type.application";
@@ -279,6 +295,9 @@
 				Base,
 			);
 			mainGroup = 3503B1E32885F0EF00989E1A;
+			packageReferences = (
+				3503B22F288757F900989E1A /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 3503B1ED2885F0EF00989E1A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -655,6 +674,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3503B22F288757F900989E1A /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3503B230288757F900989E1A /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3503B22F288757F900989E1A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		3503B232288757F900989E1A /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3503B22F288757F900989E1A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3503B1E42885F0EF00989E1A /* Project object */;
 }

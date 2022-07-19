@@ -5,23 +5,22 @@
 //  Created by José Briones Romero on 18/7/22.
 //
 
+import RealmSwift
 import Foundation
 
-import Foundation
-
-struct User: Codable {
-    var id: Int = 0
-    var name: String = ""
+class User: Codable {
+    @Persisted var id: Int = 0
+    @Persisted var name: String = ""
     var username: String = ""
-    var email: String = ""
+    @Persisted var email: String = ""
     var address: Address = Address()
-    var phone: String = ""
-    var website: String = ""
+    @Persisted var phone: String = ""
+    @Persisted var website: String = ""
     var company: Company = Company()
 }
 
 // MARK: - Address
-struct Address: Codable {
+class Address: Codable {
     var street: String = ""
     var suite: String = ""
     var city: String = ""
@@ -30,13 +29,13 @@ struct Address: Codable {
 }
 
 // MARK: - Geo
-struct Geo: Codable {
+class Geo: Codable {
     var lat: String = ""
     var lng: String = ""
 }
 
 // MARK: - Company
-struct Company: Codable {
+class Company: Codable {
     var name: String = ""
     var catchPhrase: String = ""
     var bs: String = ""
