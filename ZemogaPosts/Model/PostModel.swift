@@ -10,13 +10,8 @@ import Foundation
 
 class Post: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var id: Int
-    @Persisted var userID: Int
+    @Persisted var userId: Int
     @Persisted var title: String
     @Persisted var body: String
-
-    enum CodingKeys: String, CodingKey {
-        case userID = "userId"
-        case id, title, body
-    }
 }
 

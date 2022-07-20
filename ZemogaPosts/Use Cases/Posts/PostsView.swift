@@ -38,6 +38,7 @@ struct PostsView: View {
                 if posts.isEmpty {
                     postsViewModel.getPosts()
                 }
+                print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
             }
             .navigationTitle("\(Constants.posts)")
         }

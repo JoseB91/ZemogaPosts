@@ -64,7 +64,7 @@ final class PostsService {
             
             do {
                 let posts = try JSONDecoder().decode([Post].self, from: data)
-                print(posts)
+                // print(posts)
                 success(posts)
             } catch {
                 print(error)
@@ -100,7 +100,7 @@ final class PostsService {
             
             do {
                 let comments = try JSONDecoder().decode([Comment].self, from: data)
-                print(comments)
+                // print(comments)
                 success(comments)
             } catch {
                 print(error)
@@ -136,7 +136,7 @@ final class PostsService {
             
             do {
                 let user = try JSONDecoder().decode(User.self, from: data)
-                print(user)
+                // print(user)
                 success(user)
             } catch {
                 print(error)

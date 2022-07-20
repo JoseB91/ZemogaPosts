@@ -10,10 +10,18 @@ import SwiftUI
 
 struct DescriptionView: View {
     
-    let post: Post
+    @ObservedRealmObject var post: Post
     @ObservedObject var descriptionViewModel = DescriptionViewModel()
     @ObservedResults(Comment.self) var comments
     @ObservedResults(User.self) var users
+    
+    var commentsOfPost : [Comment]? {
+        Array(comments.where { $0.postId == post.id })
+    }
+    
+    var user: User? {
+        users.where { $0.id == post.userId}.first
+    }
     
     var body: some View {
             VStack(alignment: .leading, spacing: 0) {
@@ -31,29 +39,31 @@ struct DescriptionView: View {
                     Text("\(Constants.user)")
                         .font(.title)
                     VStack(alignment: .leading, spacing: 8) {
-                        HStack(alignment: .center, spacing: 8) {
-                            Text("\(Constants.name)")
-                                .font(.title3)
-                            Text(descriptionViewModel.user.name)
-                                .font(.body)
-                        }
-                        HStack(alignment: .center, spacing: 8) {
-                            Text("\(Constants.email)")
-                                .font(.title3)
-                            Text(descriptionViewModel.user.email)
-                                .font(.body)
-                        }
-                        HStack(alignment: .center, spacing: 8) {
-                            Text("\(Constants.phone)")
-                                .font(.title3)
-                            Text(descriptionViewModel.user.phone)
-                                .font(.body)
-                        }
-                        HStack(alignment: .center, spacing: 8) {
-                            Text("\(Constants.website)")
-                                .font(.title3)
-                            Text(descriptionViewModel.user.website)
-                                .font(.body)
+                        if let user = user {
+                            HStack(alignment: .center, spacing: 8) {
+                                Text("\(Constants.name)")
+                                    .font(.title3)
+                                Text(user.name)
+                                    .font(.body)
+                            }
+                            HStack(alignment: .center, spacing: 8) {
+                                Text("\(Constants.email)")
+                                    .font(.title3)
+                                Text(user.email)
+                                    .font(.body)
+                            }
+                            HStack(alignment: .center, spacing: 8) {
+                                Text("\(Constants.phone)")
+                                    .font(.title3)
+                                Text(user.phone)
+                                    .font(.body)
+                            }
+                            HStack(alignment: .center, spacing: 8) {
+                                Text("\(Constants.website)")
+                                    .font(.title3)
+                                Text(user.website)
+                                    .font(.body)
+                            }
                         }
                     }
                 } // USER
@@ -64,9 +74,11 @@ struct DescriptionView: View {
                         .font(.title)
                         .padding(.leading, 16)
                     ZStack {
-                        List(descriptionViewModel.comments, id: \.id) { comment in
-                            Text("\(comment.body)")
-                                .font(.body)
+                        if let commentsOfPost = commentsOfPost {
+                            List(commentsOfPost, id: \.id) { comment in
+                                Text("\(comment.body)")
+                                    .font(.body)
+                            }
                         }
                         if descriptionViewModel.loading {
                             ProgressView()
@@ -76,8 +88,13 @@ struct DescriptionView: View {
             } // VSTACK
             .padding(16)
             .onAppear {
-                descriptionViewModel.getUser(with: post.userID)
-                descriptionViewModel.getComments(of: post.userID)
+                if let commentsOfPost = commentsOfPost, commentsOfPost.isEmpty {
+                    descriptionViewModel.getComments(of: post.id)
+                }
+                guard let _ = user else {
+                    descriptionViewModel.getUser(with: post.userId)
+                    return
+                }
             }
             .navigationTitle(post.title)
         }

@@ -5,10 +5,13 @@
 //  Created by José Briones Romero on 18/7/22.
 //
 
+import RealmSwift
 import Foundation
 
 final class DescriptionViewModel: ObservableObject {
     
+    let realm = try! Realm()
+
     @Published private(set) var loading = false
     @Published private(set) var comments = [Comment]()
     @Published private(set) var user = User()
@@ -18,6 +21,9 @@ final class DescriptionViewModel: ObservableObject {
         loading = true
         PostsService.shared.fetchComments(of: userId) { comments in
             DispatchQueue.main.async {
+                comments.forEach { comment in
+                    self.save(comment)
+                }
                 self.loading = false
                 self.comments = comments
             }
@@ -31,6 +37,7 @@ final class DescriptionViewModel: ObservableObject {
         loading = true
         PostsService.shared.fetchUser(with: userId) { user in
             DispatchQueue.main.async {
+                self.save(user)
                 self.loading = false
                 self.user = user
             }
@@ -38,4 +45,25 @@ final class DescriptionViewModel: ObservableObject {
             self.loading = false
         }
     }
+    
+    func save(_ comment: Comment) {
+        do {
+            try realm.write {
+                realm.add(comment)
+            }
+        } catch {
+            print("Error saving comment \(error)")
+        }
+    }
+    
+    func save(_ user: User) {
+        do {
+            try realm.write {
+                realm.add(user)
+            }
+        } catch {
+            print("Error saving user \(error)")
+        }
+    }
+    
 }
