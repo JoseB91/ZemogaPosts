@@ -8,7 +8,7 @@
 import RealmSwift
 import Foundation
 
-class User: Codable {
+class User: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var id: Int = 0
     @Persisted var name: String = ""
     var username: String = ""

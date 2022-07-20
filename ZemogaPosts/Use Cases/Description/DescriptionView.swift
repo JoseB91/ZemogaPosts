@@ -5,12 +5,15 @@
 //  Created by José Briones Romero on 18/7/22.
 //
 
+import RealmSwift
 import SwiftUI
 
 struct DescriptionView: View {
     
     let post: Post
     @ObservedObject var descriptionViewModel = DescriptionViewModel()
+    @ObservedResults(Comment.self) var comments
+    @ObservedResults(User.self) var users
     
     var body: some View {
             VStack(alignment: .leading, spacing: 0) {

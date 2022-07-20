@@ -5,24 +5,48 @@
 //  Created by José Briones Romero on 18/7/22.
 //
 
+import RealmSwift
 import Foundation
 
 final class PostsViewModel: ObservableObject {
     
+    let realm = try! Realm()
+    
     @Published private(set) var loading = false
-    @Published private(set) var posts = [Post]()
     
     func getPosts() {
                     
         loading = true
         PostsService.shared.fetchPosts { posts in
             DispatchQueue.main.async {
+                posts.forEach { post in
+                    self.save(post)
+                }
                 self.loading = false
-                self.posts = posts
             }
         } failure: { error in
             self.loading = false
         }
     }
     
+    func save(_ post: Post) {
+        do {
+            try realm.write {
+                realm.add(post)
+            }
+        } catch {
+            print("Error saving post \(error)")
+        }
+    }
+    
+    func deleteAll() {
+        do {
+            try realm.write {
+                let allPosts = realm.objects(Post.self)
+                realm.delete(allPosts)
+            }
+        } catch {
+            print("Error deleting all posts \(error)")
+        }
+    }
 }

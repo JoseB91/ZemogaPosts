@@ -8,7 +8,7 @@
 import RealmSwift
 import Foundation
 
-class Comment: Object, Codable {
+class Comment: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var id: Int
     @Persisted var postID: Int
     @Persisted var name: String
