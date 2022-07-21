@@ -8,12 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		3503B1F02885F0EF00989E1A /* ZemogaPostsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B1EF2885F0EF00989E1A /* ZemogaPostsApp.swift */; };
-		3503B1F22885F0EF00989E1A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B1F12885F0EF00989E1A /* ContentView.swift */; };
+		3503B1F22885F0EF00989E1A /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B1F12885F0EF00989E1A /* PostsView.swift */; };
 		3503B1F42885F0F000989E1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3503B1F32885F0F000989E1A /* Assets.xcassets */; };
 		3503B1F72885F0F000989E1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3503B1F62885F0F000989E1A /* Preview Assets.xcassets */; };
 		3503B2012885F0F100989E1A /* ZemogaPostsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B2002885F0F100989E1A /* ZemogaPostsTests.swift */; };
 		3503B20B2885F0F100989E1A /* ZemogaPostsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B20A2885F0F100989E1A /* ZemogaPostsUITests.swift */; };
 		3503B20D2885F0F100989E1A /* ZemogaPostsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B20C2885F0F100989E1A /* ZemogaPostsUITestsLaunchTests.swift */; };
+		3503B21B2885F4FB00989E1A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B21A2885F4FB00989E1A /* Constants.swift */; };
+		3503B21F2885F5EC00989E1A /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B21E2885F5EC00989E1A /* PostsViewModel.swift */; };
+		3503B2212885F65C00989E1A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B2202885F65C00989E1A /* PostModel.swift */; };
+		3503B2242885F90200989E1A /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B2232885F90200989E1A /* CommentModel.swift */; };
+		3503B2262886286F00989E1A /* DescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B2252886286F00989E1A /* DescriptionViewModel.swift */; };
+		3503B228288629DD00989E1A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B227288629DD00989E1A /* UserModel.swift */; };
+		3503B22A28862C5000989E1A /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B22928862C5000989E1A /* DescriptionView.swift */; };
+		3503B22D28870CCE00989E1A /* PostsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B22C28870CCE00989E1A /* PostsService.swift */; };
+		3503B231288757F900989E1A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 3503B230288757F900989E1A /* Realm */; };
+		3503B233288757F900989E1A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3503B232288757F900989E1A /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +46,7 @@
 /* Begin PBXFileReference section */
 		3503B1EC2885F0EF00989E1A /* ZemogaPosts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZemogaPosts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3503B1EF2885F0EF00989E1A /* ZemogaPostsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaPostsApp.swift; sourceTree = "<group>"; };
-		3503B1F12885F0EF00989E1A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3503B1F12885F0EF00989E1A /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		3503B1F32885F0F000989E1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3503B1F62885F0F000989E1A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3503B1FC2885F0F100989E1A /* ZemogaPostsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZemogaPostsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +54,14 @@
 		3503B2062885F0F100989E1A /* ZemogaPostsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZemogaPostsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3503B20A2885F0F100989E1A /* ZemogaPostsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaPostsUITests.swift; sourceTree = "<group>"; };
 		3503B20C2885F0F100989E1A /* ZemogaPostsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaPostsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3503B21A2885F4FB00989E1A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3503B21E2885F5EC00989E1A /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
+		3503B2202885F65C00989E1A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		3503B2232885F90200989E1A /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		3503B2252886286F00989E1A /* DescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewModel.swift; sourceTree = "<group>"; };
+		3503B227288629DD00989E1A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		3503B22928862C5000989E1A /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		3503B22C28870CCE00989E1A /* PostsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3503B233288757F900989E1A /* RealmSwift in Frameworks */,
+				3503B231288757F900989E1A /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,8 +114,11 @@
 		3503B1EE2885F0EF00989E1A /* ZemogaPosts */ = {
 			isa = PBXGroup;
 			children = (
+				3503B22E2887207900989E1A /* Use Cases */,
+				3503B22B28870CA000989E1A /* Service */,
+				3503B2222885F72600989E1A /* Model */,
+				3503B2192885F4ED00989E1A /* Utils */,
 				3503B1EF2885F0EF00989E1A /* ZemogaPostsApp.swift */,
-				3503B1F12885F0EF00989E1A /* ContentView.swift */,
 				3503B1F32885F0F000989E1A /* Assets.xcassets */,
 				3503B1F52885F0F000989E1A /* Preview Content */,
 			);
@@ -127,6 +150,59 @@
 			path = ZemogaPostsUITests;
 			sourceTree = "<group>";
 		};
+		3503B2192885F4ED00989E1A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3503B21A2885F4FB00989E1A /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3503B21C2885F5A100989E1A /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				3503B1F12885F0EF00989E1A /* PostsView.swift */,
+				3503B21E2885F5EC00989E1A /* PostsViewModel.swift */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
+		3503B21D2885F5AB00989E1A /* Description */ = {
+			isa = PBXGroup;
+			children = (
+				3503B22928862C5000989E1A /* DescriptionView.swift */,
+				3503B2252886286F00989E1A /* DescriptionViewModel.swift */,
+			);
+			path = Description;
+			sourceTree = "<group>";
+		};
+		3503B2222885F72600989E1A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3503B2202885F65C00989E1A /* PostModel.swift */,
+				3503B2232885F90200989E1A /* CommentModel.swift */,
+				3503B227288629DD00989E1A /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3503B22B28870CA000989E1A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3503B22C28870CCE00989E1A /* PostsService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3503B22E2887207900989E1A /* Use Cases */ = {
+			isa = PBXGroup;
+			children = (
+				3503B21C2885F5A100989E1A /* Posts */,
+				3503B21D2885F5AB00989E1A /* Description */,
+			);
+			path = "Use Cases";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +219,10 @@
 			dependencies = (
 			);
 			name = ZemogaPosts;
+			packageProductDependencies = (
+				3503B230288757F900989E1A /* Realm */,
+				3503B232288757F900989E1A /* RealmSwift */,
+			);
 			productName = ZemogaPosts;
 			productReference = 3503B1EC2885F0EF00989E1A /* ZemogaPosts.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +295,9 @@
 				Base,
 			);
 			mainGroup = 3503B1E32885F0EF00989E1A;
+			packageReferences = (
+				3503B22F288757F900989E1A /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 3503B1ED2885F0EF00989E1A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +340,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3503B1F22885F0EF00989E1A /* ContentView.swift in Sources */,
+				3503B21F2885F5EC00989E1A /* PostsViewModel.swift in Sources */,
+				3503B2242885F90200989E1A /* CommentModel.swift in Sources */,
+				3503B228288629DD00989E1A /* UserModel.swift in Sources */,
+				3503B22A28862C5000989E1A /* DescriptionView.swift in Sources */,
+				3503B2212885F65C00989E1A /* PostModel.swift in Sources */,
+				3503B22D28870CCE00989E1A /* PostsService.swift in Sources */,
+				3503B1F22885F0EF00989E1A /* PostsView.swift in Sources */,
+				3503B2262886286F00989E1A /* DescriptionViewModel.swift in Sources */,
 				3503B1F02885F0EF00989E1A /* ZemogaPostsApp.swift in Sources */,
+				3503B21B2885F4FB00989E1A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +674,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3503B22F288757F900989E1A /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3503B230288757F900989E1A /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3503B22F288757F900989E1A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		3503B232288757F900989E1A /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3503B22F288757F900989E1A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3503B1E42885F0EF00989E1A /* Project object */;
 }
