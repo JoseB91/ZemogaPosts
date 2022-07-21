@@ -20,6 +20,5 @@ final class MockPostsViewModel: PostsViewModelProtocol {
     func deleteAll() {
         deleteAllCalled = true
     }
-
     
 }

@@ -26,6 +26,7 @@
 		3503B26D2889AB6200989E1A /* MockPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B26C2889AB6200989E1A /* MockPostsViewModel.swift */; };
 		3503B26F2889CD9900989E1A /* MockDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B26E2889CD9900989E1A /* MockDescriptionViewModel.swift */; };
 		3503B2712889D02A00989E1A /* DescriptionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B2702889D02A00989E1A /* DescriptionViewModelTests.swift */; };
+		3503B2762889F9D100989E1A /* MockPostsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B2752889F9D100989E1A /* MockPostsServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		3503B26C2889AB6200989E1A /* MockPostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPostsViewModel.swift; sourceTree = "<group>"; };
 		3503B26E2889CD9900989E1A /* MockDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDescriptionViewModel.swift; sourceTree = "<group>"; };
 		3503B2702889D02A00989E1A /* DescriptionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewModelTests.swift; sourceTree = "<group>"; };
+		3503B2752889F9D100989E1A /* MockPostsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPostsServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,11 +125,10 @@
 		3503B1FF2885F0F100989E1A /* ZemogaPostsTests */ = {
 			isa = PBXGroup;
 			children = (
+				3503B2742889F54700989E1A /* Mocks */,
 				3503B2002885F0F100989E1A /* PostsViewModelTests.swift */,
 				3503B2702889D02A00989E1A /* DescriptionViewModelTests.swift */,
-				3503B26A2888EC3C00989E1A /* MockPostsService.swift */,
-				3503B26C2889AB6200989E1A /* MockPostsViewModel.swift */,
-				3503B26E2889CD9900989E1A /* MockDescriptionViewModel.swift */,
+				3503B2752889F9D100989E1A /* MockPostsServiceTests.swift */,
 			);
 			path = ZemogaPostsTests;
 			sourceTree = "<group>";
@@ -183,6 +184,16 @@
 				3503B21D2885F5AB00989E1A /* Description */,
 			);
 			path = "Use Cases";
+			sourceTree = "<group>";
+		};
+		3503B2742889F54700989E1A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				3503B26A2888EC3C00989E1A /* MockPostsService.swift */,
+				3503B26C2889AB6200989E1A /* MockPostsViewModel.swift */,
+				3503B26E2889CD9900989E1A /* MockDescriptionViewModel.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +323,7 @@
 				3503B2012885F0F100989E1A /* PostsViewModelTests.swift in Sources */,
 				3503B2712889D02A00989E1A /* DescriptionViewModelTests.swift in Sources */,
 				3503B26D2889AB6200989E1A /* MockPostsViewModel.swift in Sources */,
+				3503B2762889F9D100989E1A /* MockPostsServiceTests.swift in Sources */,
 				3503B26B2888EC3C00989E1A /* MockPostsService.swift in Sources */,
 				3503B26F2889CD9900989E1A /* MockDescriptionViewModel.swift in Sources */,
 			);

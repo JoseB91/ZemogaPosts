@@ -26,6 +26,4 @@ final class MockDescriptionViewModel: DescriptionViewModelProtocol {
         deleteCalled = true
     }
     
-    
-
 }

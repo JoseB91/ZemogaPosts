@@ -12,7 +12,7 @@ class DescriptionViewModelTests: XCTestCase {
 
     var descriptionViewModel: DescriptionViewModel?
     var mockPostsService: MockPostsService?
-
+    let mockUserId = 1
     
     override func setUpWithError() throws {
         mockPostsService = MockPostsService()
@@ -33,10 +33,11 @@ class DescriptionViewModelTests: XCTestCase {
         }
 
         // Act
-        descriptionViewModel?.getComments(of: 1) //TODO: Change this
+        descriptionViewModel?.getComments(of: mockUserId) //TODO: Change this
         
         // Assert
         XCTAssert(mockPostsService.fetchCommentsCalled)
+        XCTAssertNotNil(descriptionViewModel?.realm)
     }
 
     func test_getUser() throws {
@@ -47,9 +48,10 @@ class DescriptionViewModelTests: XCTestCase {
         }
 
         // Act
-        descriptionViewModel?.getUser(with: 1) //TODO: Change this
+        descriptionViewModel?.getUser(with: mockUserId) //TODO: Change this
         
         // Assert
         XCTAssert(mockPostsService.fetchUserCalled)
+        XCTAssertNotNil(descriptionViewModel?.realm)
     }
 }

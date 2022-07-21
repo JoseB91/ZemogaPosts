@@ -36,6 +36,7 @@ class PostViewModelTests: XCTestCase {
         
         // Assert
         XCTAssert(mockPostsService.fetchPostsCalled)
+        XCTAssertNotNil(postsViewModel?.realm)
     }
 
 }

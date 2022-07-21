@@ -6,30 +6,92 @@
 //
 
 import XCTest
+@testable import ZemogaPosts
 
 class MockPostsServiceTests: XCTestCase {
 
+    var mockPostsService: MockPostsService?
+    let mockUserId = 1
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        mockPostsService = MockPostsService()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        mockPostsService = nil
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func test_fetchPosts() throws {
+        // Arrange
+        guard let mockPostsService = mockPostsService else {
+            XCTFail()
+            return
         }
+        
+        let expectation = XCTestExpectation(description: "Success case fetching posts")
+        var expectedPosts = [Post()]
+        
+        // Act
+        mockPostsService.fetchPosts { posts in
+            expectation.fulfill()
+            expectedPosts = posts
+        } failure: { error in
+            XCTFail()
+        }
+
+        // Assert
+        wait(for: [expectation], timeout: 5)
+        XCTAssertEqual(expectedPosts.count, mockPostsService.mockPosts.count)
+        XCTAssertEqual(expectedPosts.first, mockPostsService.mockPosts.first)
+        XCTAssert(mockPostsService.fetchPostsCalled)
     }
 
+    func test_fetchComments() throws {
+        // Arrange
+        guard let mockPostsService = mockPostsService else {
+            XCTFail()
+            return
+        }
+        
+        let expectation = XCTestExpectation(description: "Success case fetching comments")
+        var expectedComments = [Comment()]
+        
+        // Act
+        mockPostsService.fetchComments(of: mockUserId) { comments in
+            expectation.fulfill()
+            expectedComments = comments
+        } failure: { error in
+            XCTFail()
+        }
+
+        // Assert
+        wait(for: [expectation], timeout: 5)
+        XCTAssertEqual(expectedComments.count, mockPostsService.mockComments.count)
+        XCTAssertEqual(expectedComments.first, mockPostsService.mockComments.first)
+        XCTAssert(mockPostsService.fetchCommentsCalled)
+    }
+    
+    func test_fetchUser() throws {
+        // Arrange
+        guard let mockPostsService = mockPostsService else {
+            XCTFail()
+            return
+        }
+        
+        let expectation = XCTestExpectation(description: "Success case fetching user")
+        var expectedUser = User()
+        
+        // Act
+        mockPostsService.fetchUser(with: mockUserId) { user in
+            expectation.fulfill()
+            expectedUser = user
+        } failure: { error in
+            XCTFail()
+        }
+
+        // Assert
+        wait(for: [expectation], timeout: 5)
+        XCTAssertEqual(expectedUser, mockPostsService.mockUser)
+        XCTAssert(mockPostsService.fetchUserCalled)
+    }
 }
