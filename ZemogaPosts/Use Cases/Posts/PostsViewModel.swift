@@ -29,9 +29,11 @@ final class PostsViewModel: ObservableObject {
         }
     }
     
+    //MARK: - Realm methods
     func save(_ post: Post) {
         do {
             try realm.write {
+                post.isFavorite = false
                 realm.add(post)
             }
         } catch {

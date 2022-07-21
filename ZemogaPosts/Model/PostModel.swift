@@ -13,5 +13,6 @@ class Post: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var userId: Int
     @Persisted var title: String
     @Persisted var body: String
+    @Persisted var isFavorite: Bool? = false
 }
 

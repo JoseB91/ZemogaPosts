@@ -16,6 +16,7 @@ final class DescriptionViewModel: ObservableObject {
     @Published private(set) var comments = [Comment]()
     @Published private(set) var user = User()
 
+    // MARK: - API Methods
     func getComments(of userId: Int) {
                     
         loading = true
@@ -46,7 +47,9 @@ final class DescriptionViewModel: ObservableObject {
         }
     }
     
+    //MARK: - Realm methods
     func save(_ comment: Comment) {
+        
         do {
             try realm.write {
                 realm.add(comment)
@@ -57,6 +60,7 @@ final class DescriptionViewModel: ObservableObject {
     }
     
     func save(_ user: User) {
+        
         do {
             try realm.write {
                 realm.add(user)
@@ -66,4 +70,23 @@ final class DescriptionViewModel: ObservableObject {
         }
     }
     
+    func delete(_ post: Post) {
+        
+        do {
+            try realm.write {
+                //let posts = realm.objects(Post.self)
+                
+                guard let thawedPost = post.thaw() else {
+                    print("Couldn't thaw post")
+                    return
+                }
+                realm.delete(thawedPost)
+            }
+        } catch {
+            print("Error deleting post \(error)")
+        }
+    }
+    
+
+
 }
