@@ -8,16 +8,28 @@
 import RealmSwift
 import Foundation
 
-final class PostsViewModel: ObservableObject {
+protocol PostsViewModelProtocol {
+    func getPosts()
+    func deleteAll()
+}
+
+final class PostsViewModel: ObservableObject, PostsViewModelProtocol {
     
     let realm = try! Realm()
     
     @Published private(set) var loading = false
     
+    private let postsService: PostsServiceProtocol
+
+    init(postsService: PostsServiceProtocol) {
+      self.postsService = postsService
+    }
+    
+    // MARK: - API Service methods
     func getPosts() {
                     
         loading = true
-        PostsService.shared.fetchPosts { posts in
+        postsService.fetchPosts { posts in
             DispatchQueue.main.async {
                 posts.forEach { post in
                     self.save(post)
@@ -30,7 +42,7 @@ final class PostsViewModel: ObservableObject {
     }
     
     //MARK: - Realm methods
-    func save(_ post: Post) {
+    private func save(_ post: Post) {
         do {
             try realm.write {
                 post.isFavorite = false

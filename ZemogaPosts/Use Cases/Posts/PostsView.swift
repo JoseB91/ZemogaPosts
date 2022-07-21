@@ -10,13 +10,17 @@ import SwiftUI
 
 struct PostsView: View {
     
-    @ObservedObject var postsViewModel = PostsViewModel()
+    @ObservedObject var postsViewModel: PostsViewModel
     @ObservedResults(Post.self) var posts
     @ObservedResults(
         Post.self,
         where: { $0.isFavorite == true }
     ) var favoritePosts
     @State var showFavorites = false
+    
+    init(postsService: PostsServiceProtocol = PostsService()) {
+        _postsViewModel = ObservedObject(wrappedValue: PostsViewModel(postsService: postsService))
+    }
     
     var body: some View {
         NavigationView {
@@ -77,7 +81,10 @@ struct PostsView: View {
 }
 
 struct PostsView_Previews: PreviewProvider {
+   
+    static let postsService = PostsService()
+    
     static var previews: some View {
-        PostsView()
+        PostsView(postsService: postsService)
     }
 }

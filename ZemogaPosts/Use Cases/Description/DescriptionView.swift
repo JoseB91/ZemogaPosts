@@ -13,7 +13,7 @@ struct DescriptionView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.dismiss) var dismiss
 
-    @ObservedObject var descriptionViewModel = DescriptionViewModel()
+    @ObservedObject var descriptionViewModel: DescriptionViewModel
 
     @ObservedRealmObject var post: Post
     @ObservedResults(Comment.self) var comments
@@ -26,7 +26,12 @@ struct DescriptionView: View {
     var user: User? {
         users.where { $0.id == post.userId}.first
     }
-    
+
+    init(post: Post, postsService: PostsServiceProtocol = PostsService()) {
+        self.post = post
+        _descriptionViewModel = ObservedObject(wrappedValue: DescriptionViewModel(postsService: postsService))
+    }
+
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 8) {
@@ -88,7 +93,6 @@ struct DescriptionView: View {
             } // COMMENTS
     
             Button(action: {
-                //$post.delete()
                 descriptionViewModel.delete(post)
                 dismiss()
             }) {
@@ -114,7 +118,7 @@ struct DescriptionView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    $post.isFavorite.wrappedValue?.toggle() //TODO: Unwrap without forcing
+                    $post.isFavorite.wrappedValue?.toggle()
                 }) {
                     $post.isFavorite.wrappedValue ?? false ? Image(systemName: "star.fill").foregroundColor(.yellow): Image(systemName: "star").foregroundColor(.gray)
                 }
@@ -125,6 +129,7 @@ struct DescriptionView: View {
 
 struct DescriptionView_Previews: PreviewProvider {
     static var previews: some View {
-        DescriptionView(post: Post())
+        let postsService = PostsService()
+        DescriptionView(post: Post(), postsService: postsService)
     }
 }
