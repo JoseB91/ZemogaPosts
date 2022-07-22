@@ -10,7 +10,7 @@ Now you can run the app.
 The app uses an **MVVM** architecture.  
 The ViewModels conform to **protocols** and uses **dependency injection** in order to be testables.  
 The **service dependency** is injected in the ViewModels and then the UI uses binding properties to update the state of data.  
-The data is persisted locally using **Realm**.
+The data is persisted locally using **Realm**.  
 **SwiftUI** framework is used for UI implementation.
 
 3. Extras  
