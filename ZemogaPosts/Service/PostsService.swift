@@ -19,7 +19,6 @@ protocol PostsServiceProtocol {
               success: @escaping (_ user: User) -> Void,
               failure: @escaping (_ error: Error?) -> Void)
     
-    
 }
 
 final class PostsService: PostsServiceProtocol {
@@ -62,14 +61,13 @@ final class PostsService: PostsServiceProtocol {
             guard let data = data,
             let response = response as? HTTPURLResponse,
             error == nil else {
-                print("Error", error ?? URLError(.badServerResponse))
+                print(URLError(.badServerResponse))
                 failure(error)
                 return
             }
             
             guard (200...299) ~= response.statusCode else {
-                print("StatusCode: \(response.statusCode)")
-                print("Response: \(response)")
+                print("\(response)")
                 failure(error)
                 return
             }
@@ -97,14 +95,13 @@ final class PostsService: PostsServiceProtocol {
             guard let data = data,
             let response = response as? HTTPURLResponse,
             error == nil else {
-                print("Error", error ?? URLError(.badServerResponse))
+                print(URLError(.badServerResponse))
                 failure(error)
                 return
             }
             
             guard (200...299) ~= response.statusCode else {
-                print("StatusCode: \(response.statusCode)")
-                print("Response: \(response)")
+                print("\(response)")
                 failure(error)
                 return
             }
@@ -132,14 +129,13 @@ final class PostsService: PostsServiceProtocol {
             guard let data = data,
             let response = response as? HTTPURLResponse,
             error == nil else {
-                print("Error", error ?? URLError(.badServerResponse))                
+                print(URLError(.badServerResponse))                
                 failure(error)
                 return
             }
             
             guard (200...299) ~= response.statusCode else {
-                print("StatusCode: \(response.statusCode)")
-                print("Response: \(response)")
+                print("\(response)")
                 failure(error)
                 return
             }

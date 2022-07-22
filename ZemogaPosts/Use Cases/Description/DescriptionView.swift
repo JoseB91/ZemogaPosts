@@ -33,17 +33,18 @@ struct DescriptionView: View {
     }
 
     var body: some View {
-        VStack {
-            VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text("\(Constants.description)")
                     .font(.title)
                 Text(post.body)
                     .font(.subheadline)
                     .lineLimit(5)
             } // DESCRIPTION
-            .padding(16)
+            .padding(.horizontal, 32)
+            .padding(.vertical, 8)
             
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text("\(Constants.user)")
                     .font(.title)
                 if let user = user {
@@ -73,37 +74,35 @@ struct DescriptionView: View {
                     }
                 }
             } // USER
-            .padding(16)
+            .padding(.horizontal, 32)
+            .padding(.vertical, 8)
             
-            VStack(alignment: .leading, spacing: 8){
+            VStack(alignment: .leading, spacing: 4){
                 Text("\(Constants.comments)")
                     .font(.title)
-                    .padding(.leading, 16)
+                    .padding(.leading, 32)
                 ZStack {
                     if let commentsOfPost = commentsOfPost {
                         List(commentsOfPost, id: \.id) { comment in
                             Text("\(comment.body)")
                                 .font(.body)
                         }
+                        .listRowBackground(Color.white)
+                        .cornerRadius(16)
                     }
                     if descriptionViewModel.loading {
                         ProgressView()
                     }
                 }
             } // COMMENTS
-    
-            Button(action: {
-                descriptionViewModel.delete(post)
-                dismiss()
-            }) {
-                Text("Delete")
-                    .foregroundColor(Color.white)
-            }
-            .frame(width: 200.0)
-            .font(.title3)
-            .background(Color.red)
-            .cornerRadius(8)
+
         } // VSTACK
+        
+        ButtonView(action: {
+            descriptionViewModel.delete(post)
+            dismiss()
+        }, text: Constants.delete)
+        
         .onAppear {
             if let commentsOfPost = commentsOfPost, commentsOfPost.isEmpty {
                 descriptionViewModel.getComments(of: post.id)
@@ -120,7 +119,7 @@ struct DescriptionView: View {
                 Button(action: {
                     $post.isFavorite.wrappedValue?.toggle()
                 }) {
-                    $post.isFavorite.wrappedValue ?? false ? Image(systemName: "star.fill").foregroundColor(.yellow): Image(systemName: "star").foregroundColor(.gray)
+                    $post.isFavorite.wrappedValue ?? false ? Image(systemName: Constants.starFillImage).foregroundColor(.yellow): Image(systemName: Constants.starImage).foregroundColor(.gray)
                 }
             }
         }
