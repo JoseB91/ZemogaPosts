@@ -1,4 +1,4 @@
-#ZemogaPosts
+# ZemogaPosts
 
 1. Running the App
 To run the app is not necessary to install any Cocoa Pod.  
