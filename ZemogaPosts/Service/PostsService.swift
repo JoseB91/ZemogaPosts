@@ -7,11 +7,23 @@
 
 import Foundation
 
-final class PostsService {
+protocol PostsServiceProtocol {
+    func fetchPosts(success: @escaping (_ posts: [Post]) -> Void,
+              failure: @escaping (_ error: Error?) -> Void)
     
-    // Initialization
-    static let shared = PostsService()
+    func fetchComments(of userId: Int,
+              success: @escaping (_ comemnts: [Comment]) -> Void,
+              failure: @escaping (_ error: Error?) -> Void)
     
+    func fetchUser(with userId: Int,
+              success: @escaping (_ user: User) -> Void,
+              failure: @escaping (_ error: Error?) -> Void)
+    
+    
+}
+
+final class PostsService: PostsServiceProtocol {
+        
     // MARK: API
     private enum PostsServiceAPI {
         
@@ -142,3 +154,4 @@ final class PostsService {
         }.resume()
     }
 }
+    

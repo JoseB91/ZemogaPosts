@@ -8,7 +8,13 @@
 import RealmSwift
 import Foundation
 
-final class DescriptionViewModel: ObservableObject {
+protocol DescriptionViewModelProtocol {
+    func getComments(of userId: Int)
+    func getUser(with userId: Int)
+    func delete(_ post: Post)
+}
+
+final class DescriptionViewModel: ObservableObject, DescriptionViewModelProtocol {
     
     let realm = try! Realm()
 
@@ -16,11 +22,17 @@ final class DescriptionViewModel: ObservableObject {
     @Published private(set) var comments = [Comment]()
     @Published private(set) var user = User()
 
-    // MARK: - API Methods
+    private let postsService: PostsServiceProtocol
+
+    init(postsService: PostsServiceProtocol) {
+      self.postsService = postsService
+    }
+    
+    // MARK: - API Service Methods
     func getComments(of userId: Int) {
                     
         loading = true
-        PostsService.shared.fetchComments(of: userId) { comments in
+        postsService.fetchComments(of: userId) { comments in
             DispatchQueue.main.async {
                 comments.forEach { comment in
                     self.save(comment)
@@ -36,7 +48,7 @@ final class DescriptionViewModel: ObservableObject {
     func getUser(with userId: Int) {
                     
         loading = true
-        PostsService.shared.fetchUser(with: userId) { user in
+        postsService.fetchUser(with: userId) { user in
             DispatchQueue.main.async {
                 self.save(user)
                 self.loading = false
@@ -48,7 +60,7 @@ final class DescriptionViewModel: ObservableObject {
     }
     
     //MARK: - Realm methods
-    func save(_ comment: Comment) {
+    private func save(_ comment: Comment) {
         
         do {
             try realm.write {
@@ -59,7 +71,7 @@ final class DescriptionViewModel: ObservableObject {
         }
     }
     
-    func save(_ user: User) {
+    private func save(_ user: User) {
         
         do {
             try realm.write {
