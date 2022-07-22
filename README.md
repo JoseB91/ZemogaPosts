@@ -15,3 +15,5 @@ SwiftUI framework is used for UI implementation.
 Cache managed with Realm.
 Unit tests implemented with XCTest framework.
 
+![zp1](https://user-images.githubusercontent.com/5834201/180488952-24e51983-2984-4f83-8a3d-88e0169168d6.jpg)
+![zp2](https://user-images.githubusercontent.com/5834201/180488974-87ab7a94-0d44-4e83-9f76-8954c1ee4b8e.jpg)
