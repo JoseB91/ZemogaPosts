@@ -26,7 +26,7 @@ struct PostsView: View {
         NavigationView {
             ZStack {
                 VStack(spacing: 16) {
-                    Toggle("Show Favorites", isOn: $showFavorites)
+                    Toggle(Constants.showFavorites, isOn: $showFavorites)
                         .padding([.top, .leading, .trailing], 16)
 
                     let posts = showFavorites ? Array(favoritePosts) : Array(posts)
@@ -35,23 +35,16 @@ struct PostsView: View {
                             Text(post.title)
                                 .font(.body)
                             if post.isFavorite ?? false {
-                                Image(systemName: "star.fill")
+                                Image(systemName: Constants.starFillImage)
                                     .foregroundColor(.yellow)
                             }
                         }
                     } // LIST
-                    Button(action: {
+                    .cornerRadius(16)
+                    ButtonView(action: {
                         postsViewModel.deleteAll()
-                    }) {
-                        Text("Delete All")
-                            .foregroundColor(Color.white)
-                    }
-                        .frame(width: 200.0)
-                        .font(.title3)
-                        .background(Color.red)
-                        .cornerRadius(8)
-                        .padding(16)
-                    }
+                    }, text: Constants.deleteAll)
+                } // VSTACK
                 if postsViewModel.loading {
                     ProgressView()
                         .progressViewStyle(.circular)
@@ -61,7 +54,6 @@ struct PostsView: View {
                 if posts.isEmpty {
                     postsViewModel.getPosts()
                 }
-                print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)) // TODO: Delete this line
             }
             .navigationTitle("\(Constants.posts)")
             .navigationBarTitleDisplayMode(.inline)
@@ -71,7 +63,7 @@ struct PostsView: View {
                         postsViewModel.deleteAll()
                         postsViewModel.getPosts()
                     }) {
-                        Image(systemName: "arrow.counterclockwise")
+                        Image(systemName: Constants.loadImage)
                             .foregroundColor(.gray)
                         }
                 }

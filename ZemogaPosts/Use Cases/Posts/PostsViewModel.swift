@@ -37,7 +37,9 @@ final class PostsViewModel: ObservableObject, PostsViewModelProtocol {
                 self.loading = false
             }
         } failure: { error in
-            self.loading = false
+            DispatchQueue.main.async {
+                self.loading = false
+            }
         }
     }
     
@@ -49,7 +51,7 @@ final class PostsViewModel: ObservableObject, PostsViewModelProtocol {
                 realm.add(post)
             }
         } catch {
-            print("Error saving post \(error)")
+            print("\(Constants.couldNotSave)")
         }
     }
     
@@ -60,7 +62,7 @@ final class PostsViewModel: ObservableObject, PostsViewModelProtocol {
                 realm.delete(allPosts)
             }
         } catch {
-            print("Error deleting all posts \(error)")
+            print("\(Constants.couldNotDelete)")
         }
     }
 }

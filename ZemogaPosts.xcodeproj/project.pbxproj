@@ -27,6 +27,7 @@
 		3503B26F2889CD9900989E1A /* MockDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B26E2889CD9900989E1A /* MockDescriptionViewModel.swift */; };
 		3503B2712889D02A00989E1A /* DescriptionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B2702889D02A00989E1A /* DescriptionViewModelTests.swift */; };
 		3503B2762889F9D100989E1A /* MockPostsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B2752889F9D100989E1A /* MockPostsServiceTests.swift */; };
+		3503B2782889FE8700989E1A /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B2772889FE8700989E1A /* ButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		3503B26E2889CD9900989E1A /* MockDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDescriptionViewModel.swift; sourceTree = "<group>"; };
 		3503B2702889D02A00989E1A /* DescriptionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewModelTests.swift; sourceTree = "<group>"; };
 		3503B2752889F9D100989E1A /* MockPostsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPostsServiceTests.swift; sourceTree = "<group>"; };
+		3503B2772889FE8700989E1A /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				3503B22E2887207900989E1A /* Use Cases */,
 				3503B22B28870CA000989E1A /* Service */,
 				3503B2222885F72600989E1A /* Model */,
+				3503B279288A00CE00989E1A /* Views */,
 				3503B2192885F4ED00989E1A /* Utils */,
 				3503B1EF2885F0EF00989E1A /* ZemogaPostsApp.swift */,
 				3503B1F32885F0F000989E1A /* Assets.xcassets */,
@@ -194,6 +197,14 @@
 				3503B26E2889CD9900989E1A /* MockDescriptionViewModel.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		3503B279288A00CE00989E1A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3503B2772889FE8700989E1A /* ButtonView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +320,7 @@
 				3503B22A28862C5000989E1A /* DescriptionView.swift in Sources */,
 				3503B2212885F65C00989E1A /* PostModel.swift in Sources */,
 				3503B22D28870CCE00989E1A /* PostsService.swift in Sources */,
+				3503B2782889FE8700989E1A /* ButtonView.swift in Sources */,
 				3503B1F22885F0EF00989E1A /* PostsView.swift in Sources */,
 				3503B2262886286F00989E1A /* DescriptionViewModel.swift in Sources */,
 				3503B1F02885F0EF00989E1A /* ZemogaPostsApp.swift in Sources */,
@@ -390,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -444,7 +456,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -468,6 +480,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -497,6 +510,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

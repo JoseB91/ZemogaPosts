@@ -33,7 +33,7 @@ class DescriptionViewModelTests: XCTestCase {
         }
 
         // Act
-        descriptionViewModel?.getComments(of: mockUserId) //TODO: Change this
+        descriptionViewModel?.getComments(of: mockUserId)
         
         // Assert
         XCTAssert(mockPostsService.fetchCommentsCalled)
@@ -48,7 +48,7 @@ class DescriptionViewModelTests: XCTestCase {
         }
 
         // Act
-        descriptionViewModel?.getUser(with: mockUserId) //TODO: Change this
+        descriptionViewModel?.getUser(with: mockUserId)
         
         // Assert
         XCTAssert(mockPostsService.fetchUserCalled)

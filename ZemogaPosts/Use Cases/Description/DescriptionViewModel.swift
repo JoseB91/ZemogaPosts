@@ -41,7 +41,9 @@ final class DescriptionViewModel: ObservableObject, DescriptionViewModelProtocol
                 self.comments = comments
             }
         } failure: { error in
-            self.loading = false
+            DispatchQueue.main.async {
+                self.loading = false
+            }
         }
     }
     
@@ -55,7 +57,9 @@ final class DescriptionViewModel: ObservableObject, DescriptionViewModelProtocol
                 self.user = user
             }
         } failure: { error in
-            self.loading = false
+            DispatchQueue.main.async {
+                self.loading = false
+            }
         }
     }
     
@@ -67,7 +71,7 @@ final class DescriptionViewModel: ObservableObject, DescriptionViewModelProtocol
                 realm.add(comment)
             }
         } catch {
-            print("Error saving comment \(error)")
+            print("\(Constants.couldNotSave)")
         }
     }
     
@@ -78,7 +82,7 @@ final class DescriptionViewModel: ObservableObject, DescriptionViewModelProtocol
                 realm.add(user)
             }
         } catch {
-            print("Error saving user \(error)")
+            print("\(Constants.couldNotSave)")
         }
     }
     
@@ -89,13 +93,13 @@ final class DescriptionViewModel: ObservableObject, DescriptionViewModelProtocol
                 //let posts = realm.objects(Post.self)
                 
                 guard let thawedPost = post.thaw() else {
-                    print("Couldn't thaw post")
+                    print("\(Constants.couldNotThaw)")
                     return
                 }
                 realm.delete(thawedPost)
             }
         } catch {
-            print("Error deleting post \(error)")
+            print("\(Constants.couldNotDelete)")
         }
     }
     
